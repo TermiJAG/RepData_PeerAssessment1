@@ -45,7 +45,7 @@ hist(sum_data$total,
      col="blue", 
      xlab="Total number of steps", 
      ylim=c(0, 20), 
-     main="Histogram of total number of steps taken each day\n(NA values removed)")
+     main="Histogram - Total number of steps taken each day\n(NA values removed)")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)
@@ -88,7 +88,7 @@ plot(mean_data$interval,
      lwd=2, 
      xlab="Interval [minutes]", 
      ylab="Average number of steps", 
-     main="Time-series of the average number of steps per intervals\n(NA values removed)")
+     main="Time series of the average number of steps per intervals\n(NA values removed)")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)
@@ -134,7 +134,7 @@ hist(sum_data$total,
      col="blue", 
      xlab="Total number of steps", 
      ylim=c(0, 30), 
-     main="Histogram of the total number of steps taken each day\n(NA values replaced by mean value)")
+     main="Histogram of the total number of steps taken each day\n(NA values replaced by mean)")
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-4-1.png)
@@ -158,22 +158,22 @@ median(sum_data$total)
 ## Are there differences in activity patterns between weekdays and weekends?
 
 ```r
-# Load the lattice graphical library
+# Load lattice graphical library
 library(lattice)
 
-# Compute the average number of steps taken, averaged across all daytype variable
+# Compute average number of steps taken, average across all daytype variable
 mean_data <- aggregate(activity$steps, 
                        by=list(activity$daytype, 
                                activity$weekday, activity$interval), mean)
 
-# Rename the attributes
+# Rename attributes
 names(mean_data) <- c("daytype", "weekday", "interval", "mean")
 
 xyplot(mean ~ interval | daytype, mean_data, 
        type="l", 
        lwd=1, 
        xlab="Interval", 
-       ylab="Number of steps", 
+       ylab="Number of steps taken", 
        layout=c(1,2))
 ```
 
